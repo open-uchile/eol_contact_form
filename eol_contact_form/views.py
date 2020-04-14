@@ -13,5 +13,7 @@ logger = logging.getLogger(__name__)
 
 class EolContactFormView(View):
     def get(self, request):
-        context = {}
+        context = {
+            'recaptcha_site_key': settings.EOL_CONTACT_FORM_RECAPTCHA_SITE_KEY,
+        }
         return render(request, 'eol_contact_form/contact.html', context)

@@ -4,6 +4,126 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="../main.html" />
 <%block name="pagetitle">${_("Formulario de Contacto")}</%block>
-<main id="main" aria-label="Content" tabindex="-1" class="static_pages">
-    <h1>Contact Form Test Page</h1>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+    .contact-form .contact-header {
+        text-align: center;
+    }
+    .contact-form .contact-header p {
+        font-style: italic;
+    }
+
+    .contact-form form input[type=text], 
+    .contact-form form input[type=email], 
+    .contact-form select, 
+    .contact-form form textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .contact-form form input[type=submit] {
+        background: none;
+        box-shadow: none;
+        text-shadow: none;
+        width: 100%;
+        background-color: #059de8;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .contact-form form input[type=submit]:hover {
+        background: none;
+        background-color: #0ab1e4;
+    }
+
+    .contact-form .contact-form-input {
+        width: 70%;
+        margin: auto;
+        margin-top: 25px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .contact-form .google-recaptcha {
+        text-align: center;
+    }
+    .contact-form .g-recaptcha {
+        display: inline-block;
+    }
+</style>
+<main id="main" aria-label="Content" tabindex="-1" class="static_pages contact-form">
+    <div class="row">
+        <div class="contact-header">
+            <h1>Formulario de Contacto</h1>
+            <h2>¿Tienes dudas? ¿Necesitas ayuda?</h2>
+            <h2>Llena el formulario y nuestra mesa de ayuda se pondrá en contacto a la brevedad.</h2>
+            <p>El horario de atención de esta mesa de ayuda es de <strong>Lunes a Viernes de 9:00 a 18:00 Hrs.</strong></p>
+        </div>
+    </div>
+    <div class="row contact-form-input">
+        <form action="?" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
+            <label for="form-rut">Rut</label>
+            <input type="text" id="form-rut" name="form-rut" required placeholder="Ingrese un rut válido 12345678-9.">
+
+            <label for="form-name">Nombre</label>
+            <input type="text" id="form-name" name="form-name" required placeholder="Ingresa tu Nombre">
+
+            <label for="form-email">E-mail</label>
+            <input type="email" id="form-email" name="form-email" required placeholder="Ingresa tu correo electrónico">
+
+            <label for="form-type">Tipo de consulta</label>
+            <select id="form-type" required name="form-type">
+                <option value="general">General</option>
+                <option value="course">Dudas de un curso en específico</option>
+            </select>
+            <label class="form-course-name" for="form-course">Nombre del curso</label>
+            <input class="form-course-name" type="text" id="form-course" name="form-course" placeholder="Ingresa el nombre del curso con dudas">
+
+            <label for="form-message">Mensaje</label>
+            <textarea id="form-message" name="form-message" required placeholder="Ingresa tus dudas y consultas en este campo de texto"></textarea>
+            <div class="google-recaptcha">
+                <div class="g-recaptcha" data-sitekey="${context.get('recaptcha_site_key', UNDEFINED)}" data-callback="correctCaptcha" data-expired-callback="correctCaptcha"></div>
+            </div>
+            <input disabled class="btn btn-primary form-submit" type="submit" value="Enviar Consulta">
+        </form>
+    </div>
 </main>
+
+<script>
+    var correctCaptcha = function(response) {
+        if(response.length != 0) {
+            $('.form-submit').prop('disabled', false);;
+        } else {
+            $('.form-submit').prop('disabled', true);;
+        }
+    };
+    $(function() {
+        show_course_name();
+
+        $('#form-type').on('change', function() {
+            show_course_name();
+        });
+
+        function show_course_name() {
+            if($('#form-type').val() == 'course') {
+                $('.form-course-name').show();
+                $("#form-course").prop('required',true);
+            } else {
+                $('.form-course-name').hide();
+                $('#form-course').val('');
+                $("#form-course").prop('required',false);
+            }
+        }
+    });
+</script>
