@@ -60,7 +60,40 @@
     .contact-form .g-recaptcha {
         display: inline-block;
     }
+
+    .contact-form .alert {
+        padding: 15px 20px;
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;;
+    }
+
+    .contact-form .alert.success {
+        background-color: #008100ad;
+    }
+
+    .contact-form .alert.error {
+        background-color: #f44336;
+    }
+
+    .contact-form .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .contact-form .closebtn:hover {
+        color: black;
+    }
 </style>
+<% 
+data = context.get('data', None) 
+%>
 <main id="main" aria-label="Content" tabindex="-1" class="static_pages contact-form">
     <div class="row">
         <div class="contact-header">
@@ -71,29 +104,45 @@
         </div>
     </div>
     <div class="row contact-form-input">
-        <form action="?" method="POST">
+        <form method="POST">
+            % if context.get('error', None):
+            <div class="alert error">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>Error!</strong> Ingresa un ${context.get('error', None)} válido
+            </div>
+            % endif
+            % if context.get('success', None):
+            <div class="alert success">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>¡Consulta enviada!</strong>. Espera a que nuestra mesa de ayuda se ponga en contacto contigo.
+            </div>
+            % endif
             <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
             <label for="form-rut">Rut</label>
-            <input type="text" id="form-rut" name="form-rut" required placeholder="Ingrese un rut válido 12345678-9.">
+            <input type="text" id="form-rut" name="form-rut" required placeholder="Ingrese un rut válido 12345678-9." value="${data['form-rut']}">
 
             <label for="form-name">Nombre</label>
-            <input type="text" id="form-name" name="form-name" required placeholder="Ingresa tu Nombre">
+            <input type="text" id="form-name" name="form-name" required placeholder ="Ingresa tu Nombre" value="${data['form-name']}">
 
             <label for="form-email">E-mail</label>
-            <input type="email" id="form-email" name="form-email" required placeholder="Ingresa tu correo electrónico">
+            <input type="email" id="form-email" name="form-email" required placeholder="Ingresa tu correo electrónico" value="${data['form-email']}">
 
             <label for="form-type">Tipo de consulta</label>
             <select id="form-type" required name="form-type">
-                <option value="general">General</option>
-                <option value="course">Dudas de un curso en específico</option>
+                <%
+                    general_selected = 'selected' if data['form-type'] == 'general' else ''
+                    course_selected = 'selected' if data['form-type'] == 'course' else ''
+                %>
+                <option value="general" ${general_selected}>General</option>
+                <option value="course" ${course_selected}>Dudas de un curso en específico</option>
             </select>
             <label class="form-course-name" for="form-course">Nombre del curso</label>
-            <input class="form-course-name" type="text" id="form-course" name="form-course" placeholder="Ingresa el nombre del curso con dudas">
+            <input class="form-course-name" type="text" id="form-course" name="form-course" placeholder="Ingresa el nombre del curso con dudas" value="${data['form-course']}">
 
             <label for="form-message">Mensaje</label>
-            <textarea id="form-message" name="form-message" required placeholder="Ingresa tus dudas y consultas en este campo de texto"></textarea>
+            <textarea id="form-message" name="form-message" required placeholder="Ingresa tus dudas y consultas en este campo de texto" minlength="8">${data['form-message']}</textarea>
             <div class="google-recaptcha">
-                <div class="g-recaptcha" data-sitekey="${context.get('recaptcha_site_key', UNDEFINED)}" data-callback="correctCaptcha" data-expired-callback="correctCaptcha"></div>
+                <div class="g-recaptcha" data-sitekey="${context.get('recaptcha_site_key', None)}" data-callback="correctCaptcha" data-expired-callback="correctCaptcha"></div>
             </div>
             <input disabled class="btn btn-primary form-submit" type="submit" value="Enviar Consulta">
         </form>
