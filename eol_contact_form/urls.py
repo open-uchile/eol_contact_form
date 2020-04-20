@@ -8,9 +8,7 @@ from .views import EolContactFormView
 
 urlpatterns = (
     url(
-        r'contact_form$'.format(
-            settings.COURSE_ID_PATTERN,
-        ),
+        r'contact_form$',
         EolContactFormView.as_view(),
         name='contact_form_view',
     ),

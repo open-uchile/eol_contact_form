@@ -18,6 +18,12 @@ Set help desk email in a Site:
 - */admin/site_configuration/siteconfiguration/*
     - **"EOL_CONTACT_FORM_HELP_DESK_EMAIL":""**
 
+## TESTS
+**Prepare tests:**
+
+    > cd .github/
+    > docker-compose run lms /openedx/requirements/eol_contact_form/.github/test.sh
+
 # Screenshots
 *Last Update 15/04/2020*
 
