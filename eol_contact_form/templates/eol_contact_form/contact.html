@@ -105,10 +105,16 @@ data = context.get('data', None)
     </div>
     <div class="row contact-form-input">
         <form method="POST">
+            % if context.get('send_email_error', None):
+            <div class="alert error">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>¡Intente nuevamente!</strong><br>Hubo un problema al intentar generar su ticket.<br>Si el problema persiste, envíe un correo a ${help_desk_email}
+            </div>
+            % endif
             % if context.get('error', None):
             <div class="alert error">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <strong>Error!</strong> Ingresa un ${context.get('error', None)} válido
+                <strong>¡Error!</strong> Ingresa un ${context.get('error', None)} válido
             </div>
             % endif
             % if context.get('success', None):
@@ -131,10 +137,10 @@ data = context.get('data', None)
             <select id="form-type" required name="form-type">
                 <%
                     general_selected = 'selected' if data['form-type'] == 'general' else ''
-                    course_selected = 'selected' if data['form-type'] == 'course' else ''
+                    course_selected = 'selected' if data['form-type'] == 'curso' else ''
                 %>
                 <option value="general" ${general_selected}>General</option>
-                <option value="course" ${course_selected}>Dudas de un curso en específico</option>
+                <option value="curso" ${course_selected}>Dudas de un curso en específico</option>
             </select>
             <label class="form-course-name" for="form-course">Nombre del curso</label>
             <input class="form-course-name" type="text" id="form-course" name="form-course" placeholder="Ingresa el nombre del curso con dudas" value="${data['form-course']}">
@@ -165,7 +171,7 @@ data = context.get('data', None)
         });
 
         function show_course_name() {
-            if($('#form-type').val() == 'course') {
+            if($('#form-type').val() == 'curso') {
                 $('.form-course-name').show();
                 $("#form-course").prop('required',true);
             } else {
