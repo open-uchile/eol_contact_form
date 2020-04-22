@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
-from django.core.mail import send_mail, EmailMessage, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 
@@ -94,7 +94,7 @@ class EolContactFormView(View):
         if data['form-type'] == '':
             return {
                 'error': True,
-                'error_attr': 'form-type'
+                'error_attr': 'Categoria'
             }
         if data['form-course'] == '' and data['form-type'] == 'curso':
             return {
@@ -163,7 +163,7 @@ class EolContactFormView(View):
             Send contact mail to help desk
         """
         platform_name = configuration_helpers.get_value(
-            'PLATFORM_NAME', settings.PLATFORM_NAME)
+            'PLATFORM_NAME', settings.PLATFORM_NAME).encode('utf-8').upper()
         help_desk_email = configuration_helpers.get_value(
             'EOL_CONTACT_FORM_HELP_DESK_EMAIL', settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         email_data = {
@@ -172,14 +172,14 @@ class EolContactFormView(View):
             "user_message" : data['form-message'].encode('utf-8').strip(),
             "user_type_message" : data['form-type'].upper(),
             "user_course" : data['form-course'].encode('utf-8').strip().upper(),
-            "platform_name" : platform_name.upper(),
+            "platform_name" : platform_name,
         }
         # Generate HTML Message with help_desk_email template
         html_message = render_to_string(
             'emails/help_desk_email.txt', email_data)
         plain_message = strip_tags(html_message)
 
-        subject = '%s - %s' % (data['form-type'].upper(), platform_name.upper())
+        subject = u'{} - {}'.format(data['form-type'].upper(), platform_name)
         reply_to = data['form-email'] # User email
 
         # Send Email with plain message
