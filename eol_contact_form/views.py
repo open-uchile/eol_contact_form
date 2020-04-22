@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
-from django.core.mail import send_mail, EmailMessage, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 
@@ -34,7 +34,8 @@ DEFAULT_DATA = {
 class EolContactFormView(View):
     def get(self, request):
         help_desk_email = configuration_helpers.get_value(
-            'EOL_CONTACT_FORM_HELP_DESK_EMAIL', settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
+            'EOL_CONTACT_FORM_HELP_DESK_EMAIL',
+            settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         context = {
             'recaptcha_site_key': settings.EOL_CONTACT_FORM_RECAPTCHA_SITE_KEY,
             'help_desk_email': help_desk_email,
@@ -49,7 +50,8 @@ class EolContactFormView(View):
 
         # Init with default values
         help_desk_email = configuration_helpers.get_value(
-            'EOL_CONTACT_FORM_HELP_DESK_EMAIL', settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
+            'EOL_CONTACT_FORM_HELP_DESK_EMAIL',
+            settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         context = {
             'recaptcha_site_key': settings.EOL_CONTACT_FORM_RECAPTCHA_SITE_KEY,
             'help_desk_email': help_desk_email,
@@ -71,7 +73,6 @@ class EolContactFormView(View):
             context['data'] = request.POST  # Update data with form values
         return render(request, 'eol_contact_form/contact.html', context)
 
-    
     def validate_data(self, data):
         """
             Validate all form data
@@ -94,7 +95,7 @@ class EolContactFormView(View):
         if data['form-type'] == '':
             return {
                 'error': True,
-                'error_attr': 'form-type'
+                'error_attr': 'Categoria'
             }
         if data['form-course'] == '' and data['form-type'] == 'curso':
             return {
@@ -163,24 +164,25 @@ class EolContactFormView(View):
             Send contact mail to help desk
         """
         platform_name = configuration_helpers.get_value(
-            'PLATFORM_NAME', settings.PLATFORM_NAME)
+            'PLATFORM_NAME', settings.PLATFORM_NAME).encode('utf-8').upper()
         help_desk_email = configuration_helpers.get_value(
-            'EOL_CONTACT_FORM_HELP_DESK_EMAIL', settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
+            'EOL_CONTACT_FORM_HELP_DESK_EMAIL',
+            settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         email_data = {
-            "user_name" : data['form-name'].encode('utf-8').strip().upper(),
-            "user_rut" : data['form-rut'],
-            "user_message" : data['form-message'].encode('utf-8').strip(),
-            "user_type_message" : data['form-type'].upper(),
-            "user_course" : data['form-course'].encode('utf-8').strip().upper(),
-            "platform_name" : platform_name.upper(),
+            "user_name": data['form-name'].encode('utf-8').strip().upper(),
+            "user_rut": data['form-rut'],
+            "user_message": data['form-message'].encode('utf-8').strip(),
+            "user_type_message": data['form-type'].upper(),
+            "user_course": data['form-course'].encode('utf-8').strip().upper(),
+            "platform_name": platform_name,
         }
         # Generate HTML Message with help_desk_email template
         html_message = render_to_string(
             'emails/help_desk_email.txt', email_data)
         plain_message = strip_tags(html_message)
 
-        subject = '%s - %s' % (data['form-type'].upper(), platform_name.upper())
-        reply_to = data['form-email'] # User email
+        subject = u'{} - {}'.format(data['form-type'].upper(), platform_name)
+        reply_to = data['form-email']  # User email
 
         # Send Email with plain message
         email_message = EmailMultiAlternatives(
@@ -192,5 +194,7 @@ class EolContactFormView(View):
         )
         # Add alternative content type (HTML)
         email_message.attach_alternative(html_message, "text/html")
-        email = email_message.send() # The return value will be the number of successfully delivered messages (1 in this case)
+        # The return value will be the number of successfully delivered
+        # messages (1 in this case)
+        email = email_message.send()
         return True if email == 1 else False

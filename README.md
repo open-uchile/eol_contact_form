@@ -1,5 +1,7 @@
 # EOL CONTACT FORM
 
+![https://github.com/eol-uchile/eol_contact_form/actions](https://github.com/eol-uchile/eol_contact_form/workflows/Python%20application/badge.svg)
+
 New Page for Open Edx LMS (EOL) with a contact form
 
 # Install
@@ -17,6 +19,12 @@ To enable [Google ReCAPTCHA v2](https://www.google.com/recaptcha/) Edit *product
 Set help desk email in a Site:
 - */admin/site_configuration/siteconfiguration/*
     - **"EOL_CONTACT_FORM_HELP_DESK_EMAIL":""**
+
+## TESTS
+**Prepare tests:**
+
+    > cd .github/
+    > docker-compose run lms /openedx/requirements/eol_contact_form/.github/test.sh
 
 # Screenshots
 *Last Update 15/04/2020*
