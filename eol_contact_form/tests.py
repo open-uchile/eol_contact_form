@@ -19,6 +19,7 @@ test_config = {
     'EOL_CONTACT_FORM_HELP_DESK_EMAIL': 'test@test.test'
 }
 
+
 class TestEolContactForm(TestCase):
     def setUp(self):
 
@@ -192,7 +193,7 @@ class TestEolContactForm(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('class="alert success"', content.decode('utf-8'))
 
-        data['form-rut'] = '52243213-0' # wrong rut
+        data['form-rut'] = '52243213-0'  # wrong rut
         response = self.client.post(reverse('contact_form_view'), data)
         content = response.content
         self.assertEqual(response.status_code, 200)
@@ -204,7 +205,7 @@ class TestEolContactForm(TestCase):
         content = response.content
         self.assertEqual(response.status_code, 200)
         self.assertIn('class="alert error"', content.decode('utf-8'))
-        
+
         del data['form-rut']
         response = self.client.post(reverse('contact_form_view'), data)
         self.assertEqual(response.status_code, 400)

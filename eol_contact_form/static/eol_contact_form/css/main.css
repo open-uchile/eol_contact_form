@@ -1,0 +1,84 @@
+.contact-form .contact-header {
+    text-align: center;
+}
+.contact-form .contact-header p {
+    font-style: italic;
+}
+
+.contact-form form input[type=text], 
+.contact-form form input[type=email], 
+.contact-form select, 
+.contact-form form textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contact-form form input[type=submit] {
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    width: 100%;
+    background-color: #059de8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form form input[type=submit]:hover {
+    background: none;
+    background-color: #0ab1e4;
+}
+
+.contact-form .contact-form-input {
+    width: 70%;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.contact-form .google-recaptcha {
+    text-align: center;
+}
+.contact-form .g-recaptcha {
+    display: inline-block;
+}
+
+.contact-form .alert {
+    padding: 15px 20px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;;
+}
+
+.contact-form .alert.success {
+    background-color: #008100ad;
+}
+
+.contact-form .alert.error {
+    background-color: #f44336;
+}
+
+.contact-form .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form .closebtn:hover {
+    color: black;
+}
