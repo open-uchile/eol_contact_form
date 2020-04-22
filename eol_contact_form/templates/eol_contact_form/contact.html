@@ -40,8 +40,8 @@ data = context.get('data', None)
             </div>
             % endif
             <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
-            <label for="form-rut">Rut</label>
-            <input type="text" id="form-rut" name="form-rut" required placeholder="Ingrese un rut válido 12345678-9." value="${data['form-rut']}">
+            <label for="form-rut">Rut o Pasaporte</label>
+            <input type="text" id="form-rut" name="form-rut" required placeholder="Ingrese un rut válido (12345678-9), o pasaporte (P123456789)" value="${data['form-rut']}">
 
             <label for="form-name">Nombre</label>
             <input type="text" id="form-name" name="form-name" required placeholder ="Ingresa tu Nombre" value="${data['form-name']}">
