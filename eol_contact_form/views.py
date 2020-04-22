@@ -82,27 +82,27 @@ class EolContactFormView(View):
                 'error': True,
                 'error_attr': 'Rut'
             }
-        if data['form-name'] == '':
+        if data['form-name'].strip() == '':
             return {
                 'error': True,
                 'error_attr': 'Nombre'
             }
-        if data['form-email'] == '' or '@' not in data['form-email']:
+        if data['form-email'].strip() == '' or '@' not in data['form-email']:
             return {
                 'error': True,
                 'error_attr': 'Email'
             }
-        if data['form-type'] == '':
+        if data['form-type'].strip() == '':
             return {
                 'error': True,
                 'error_attr': 'Categoria'
             }
-        if data['form-course'] == '' and data['form-type'] == 'curso':
+        if data['form-course'].strip() == '' and data['form-type'] == 'curso':
             return {
                 'error': True,
                 'error_attr': 'Curso'
             }
-        if data['form-message'] == '':
+        if data['form-message'].strip() == '':
             return {
                 'error': True,
                 'error_attr': 'Mensaje'
