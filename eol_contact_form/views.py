@@ -25,7 +25,7 @@ DEFAULT_DATA = {
     'form-rut': '',
     'form-name': '',
     'form-email': '',
-    'form-type': 'general',
+    'form-type': '',
     'form-course': '',
     'form-message': '',
 }

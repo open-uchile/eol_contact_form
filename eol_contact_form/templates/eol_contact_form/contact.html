@@ -55,6 +55,7 @@ data = context.get('data', None)
                     general_selected = 'selected' if data['form-type'] == 'general' else ''
                     course_selected = 'selected' if data['form-type'] == 'curso' else ''
                 %>
+                <option disabled selected value="">Selecciona una opción</option>
                 <option value="general" ${general_selected}>General</option>
                 <option value="curso" ${course_selected}>Dudas de un curso en específico</option>
             </select>
