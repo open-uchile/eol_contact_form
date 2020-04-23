@@ -18,6 +18,11 @@
     box-sizing: border-box;
 }
 
+.contact-form select {
+    font: italic 300 1rem/1.6rem Georgia,Cambria,"Times New Roman",Times,serif;
+    text-indent: 10px;
+}
+
 .contact-form form input[type=submit] {
     background: none;
     box-shadow: none;
