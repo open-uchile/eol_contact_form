@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.urls import reverse
 from django.test import TestCase
@@ -12,7 +12,7 @@ from openedx.core.djangoapps.site_configuration.tests.test_util import (
     with_site_configuration_context,
 )
 
-import views
+from . import views
 
 test_config = {
     'PLATFORM_NAME': 'PLATFORM_NAME',
