@@ -66,7 +66,7 @@ class EolContactFormView(View):
             return render(request, 'eol_contact_form/contact.html', context)
 
         # Send success or email_error flag
-        if self.send_contact_mail(request.POST):
+        if self.send_contact_mail(request.user.username, request.POST):
             context['success'] = True
         else:
             context['send_email_error'] = True
@@ -159,7 +159,7 @@ class EolContactFormView(View):
         else:
             return False
 
-    def send_contact_mail(self, data):
+    def send_contact_mail(self, username, data):
         """
             Send contact mail to help desk
         """
@@ -170,6 +170,7 @@ class EolContactFormView(View):
             settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         email_data = {
             "user_name": data['form-name'].strip().upper(),
+            "user_username" : username.upper(),
             "user_rut": data['form-rut'],
             "user_message": data['form-message'].strip(),
             "user_type_message": data['form-type'].upper(),
