@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.apps import AppConfig
 from openedx.core.djangoapps.plugins.constants import PluginSettings, PluginURLs, ProjectType, SettingsType
 
 
 class EolContactFormConfig(AppConfig):
-    name = u'eol_contact_form'
+    name = 'eol_contact_form'
 
     plugin_app = {
         PluginURLs.CONFIG: {
             ProjectType.LMS: {
-                PluginURLs.NAMESPACE: u'',
+                PluginURLs.NAMESPACE: '',
                 PluginURLs.REGEX: r'^',
-                PluginURLs.RELATIVE_PATH: u'urls',
+                PluginURLs.RELATIVE_PATH: 'urls',
             }},
         PluginSettings.CONFIG: {
             ProjectType.LMS: {
                 SettingsType.COMMON: {
-                    PluginSettings.RELATIVE_PATH: u'settings.common'},
+                    PluginSettings.RELATIVE_PATH: 'settings.common'},
             },
         }}
 

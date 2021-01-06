@@ -3,7 +3,11 @@
 <html>
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 <center>
-    <p>${("<strong>{user_name} ({user_rut})</strong> ha creado un ticket a traves de la plataforma: <strong>{platform_name}</strong>.").format(user_name=user_name, user_rut=user_rut, platform_name=platform_name)}</p>
+    % if user_username:
+        <p>${("<strong>{user_name} (Rut: {user_rut}; Username: {user_username})</strong> ha creado un ticket a traves de la plataforma: <strong>{platform_name}</strong>.").format(user_name=user_name, user_rut=user_rut, user_username=user_username, platform_name=platform_name)}</p>
+    % else:
+        <p>${("<strong>{user_name} (Rut: {user_rut})</strong> ha creado un ticket a traves de la plataforma: <strong>{platform_name}</strong>.").format(user_name=user_name, user_rut=user_rut, platform_name=platform_name)}</p>
+    % endif
     <p>${("Categoria: <strong>{user_type_message}</strong>.").format(user_type_message=user_type_message)}</p>
     % if user_type_message == 'CURSO':
     <p>${("Curso: <strong>{user_course}</strong>.").format(user_course=user_course)}</p>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.urls import reverse
 from django.test import TestCase
@@ -12,7 +12,7 @@ from openedx.core.djangoapps.site_configuration.tests.test_util import (
     with_site_configuration_context,
 )
 
-import views
+from . import views
 
 test_config = {
     'PLATFORM_NAME': 'PLATFORM_NAME',
@@ -158,11 +158,11 @@ class TestEolContactForm(TestCase):
             'g-recaptcha-response': 'text_recaptcha'
         }
         send.side_effect = [1]
-        result = views.EolContactFormView().send_contact_mail(data)
+        result = views.EolContactFormView().send_contact_mail('username', data)
         self.assertEqual(result, True)
 
         send.side_effect = [0]
-        result = views.EolContactFormView().send_contact_mail(data)
+        result = views.EolContactFormView().send_contact_mail('username', data)
         self.assertEqual(result, False)
 
     @with_site_configuration(configuration=test_config)

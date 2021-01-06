@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.views.generic.base import View
 from django.urls import reverse
@@ -66,7 +66,7 @@ class EolContactFormView(View):
             return render(request, 'eol_contact_form/contact.html', context)
 
         # Send success or email_error flag
-        if self.send_contact_mail(request.POST):
+        if self.send_contact_mail(request.user.username, request.POST):
             context['success'] = True
         else:
             context['send_email_error'] = True
@@ -147,8 +147,8 @@ class EolContactFormView(View):
         aux = rut[:-1]
         dv = rut[-1:]
 
-        revertido = map(int, reversed(str(aux)))
-        factors = cycle(range(2, 8))
+        revertido = list(map(int, reversed(str(aux))))
+        factors = cycle(list(range(2, 8)))
         s = sum(d * f for d, f in zip(revertido, factors))
         res = (-s) % 11
 
@@ -159,21 +159,22 @@ class EolContactFormView(View):
         else:
             return False
 
-    def send_contact_mail(self, data):
+    def send_contact_mail(self, username, data):
         """
             Send contact mail to help desk
         """
         platform_name = configuration_helpers.get_value(
-            'PLATFORM_NAME', settings.PLATFORM_NAME).encode('utf-8').upper()
+            'PLATFORM_NAME', settings.PLATFORM_NAME).upper()
         help_desk_email = configuration_helpers.get_value(
             'EOL_CONTACT_FORM_HELP_DESK_EMAIL',
             settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
         email_data = {
-            "user_name": data['form-name'].encode('utf-8').strip().upper(),
+            "user_name": data['form-name'].strip().upper(),
+            "user_username" : username.upper(),
             "user_rut": data['form-rut'],
-            "user_message": data['form-message'].encode('utf-8').strip(),
+            "user_message": data['form-message'].strip(),
             "user_type_message": data['form-type'].upper(),
-            "user_course": data['form-course'].encode('utf-8').strip().upper(),
+            "user_course": data['form-course'].strip().upper(),
             "platform_name": platform_name,
         }
         # Generate HTML Message with help_desk_email template
@@ -181,7 +182,7 @@ class EolContactFormView(View):
             'emails/help_desk_email.txt', email_data)
         plain_message = strip_tags(html_message)
 
-        subject = u'{} - {}'.format(data['form-type'].upper(), platform_name)
+        subject = '{} - {}'.format(data['form-type'].upper(), platform_name)
         reply_to = data['form-email']  # User email
 
         # Send Email with plain message
