@@ -21,14 +21,15 @@ import json
 import logging
 logger = logging.getLogger(__name__)
 
-DEFAULT_DATA = {
-    'form-rut': '',
-    'form-name': '',
-    'form-email': '',
-    'form-type': '',
-    'form-course': '',
-    'form-message': '',
-}
+def _default_data():
+    return {
+        'form-rut': '',
+        'form-name': '',
+        'form-email': '',
+        'form-type': '',
+        'form-course': '',
+        'form-message': '',
+    }
 
 
 class EolContactFormView(View):
@@ -36,10 +37,18 @@ class EolContactFormView(View):
         help_desk_email = configuration_helpers.get_value(
             'EOL_CONTACT_FORM_HELP_DESK_EMAIL',
             settings.EOL_CONTACT_FORM_HELP_DESK_EMAIL)
+        data = _default_data()
+
+        # Fill course name in the form
+        course_name = request.GET.get('course')
+        if course_name is not None:
+            data['form-type'] = 'curso'
+            data['form-course'] = course_name
+
         context = {
             'recaptcha_site_key': settings.EOL_CONTACT_FORM_RECAPTCHA_SITE_KEY,
             'help_desk_email': help_desk_email,
-            'data': DEFAULT_DATA,
+            'data': data,
         }
         return render(request, 'eol_contact_form/contact.html', context)
 
@@ -55,7 +64,7 @@ class EolContactFormView(View):
         context = {
             'recaptcha_site_key': settings.EOL_CONTACT_FORM_RECAPTCHA_SITE_KEY,
             'help_desk_email': help_desk_email,
-            'data': DEFAULT_DATA,
+            'data': _default_data(),
         }
         # Validate user form data
         validation = self.validate_data(request.POST)
