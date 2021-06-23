@@ -199,6 +199,12 @@ class TestEolContactForm(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('class="alert error"', content.decode('utf-8'))
 
+        data['form-rut'] = '522PAÑ21-0'  # wrong rut
+        response = self.client.post(reverse('contact_form_view'), data)
+        content = response.content
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('class="alert error"', content.decode('utf-8'))
+
         data['form-rut'] = '52243213-K'
         send_contact_mail.side_effect = [False]
         response = self.client.post(reverse('contact_form_view'), data)
