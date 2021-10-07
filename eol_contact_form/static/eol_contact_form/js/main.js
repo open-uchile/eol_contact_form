@@ -13,7 +13,7 @@ $(function() {
     });
 
     function show_course_name() {
-        if($('#form-type').val() == 'curso') {
+        if($('#form-type').val() == 'course') {
             $('.form-course-name').show();
             $("#form-course").prop('required',true);
         } else {

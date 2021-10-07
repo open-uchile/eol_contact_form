@@ -6,7 +6,7 @@ from django.test import TestCase
 from mock import patch
 
 from collections import namedtuple
-
+from django.utils.translation import ugettext as _
 from openedx.core.djangoapps.site_configuration.tests.test_util import (
     with_site_configuration,
     with_site_configuration_context,
@@ -43,10 +43,9 @@ class TestEolContactForm(TestCase):
         """
         validate_recaptcha.side_effect = [True]
         data = {
-            'form-rut': '52243213-K',
             'form-name': 'test_name',
             'form-email': 'test_email@email.com',
-            'form-type': 'curso',
+            'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
             'g-recaptcha-response': 'text_recaptcha'
@@ -62,32 +61,28 @@ class TestEolContactForm(TestCase):
         data['form-message'] = ''
         result = views.EolContactFormView().validate_data(data)
         self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Mensaje')
+        self.assertEqual(result['error_attr'], _('Message'))
 
         data['form-course'] = ''
         result = views.EolContactFormView().validate_data(data)
         self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Curso')
+        self.assertEqual(result['error_attr'], _('Course'))
 
         data['form-type'] = ''
         result = views.EolContactFormView().validate_data(data)
         self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Categoria')
+        self.assertEqual(result['error_attr'], _('Category'))
 
         data['form-email'] = ''
         result = views.EolContactFormView().validate_data(data)
         self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Email')
+        self.assertEqual(result['error_attr'], _('Email'))
 
         data['form-name'] = ''
         result = views.EolContactFormView().validate_data(data)
         self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Nombre')
+        self.assertEqual(result['error_attr'], _('Name'))
 
-        data['form-rut'] = '52243213-2'
-        result = views.EolContactFormView().validate_data(data)
-        self.assertEqual(result['error'], True)
-        self.assertEqual(result['error_attr'], 'Rut')
 
     @patch("requests.post")
     def test_validate_recaptcha(self, post):
@@ -122,24 +117,6 @@ class TestEolContactForm(TestCase):
         result = views.EolContactFormView().validate_recaptcha('recaptcha')
         self.assertEqual(result, False)
 
-    def test_validate_rut(self):
-        """
-            Validate rut function
-            1. Success with rut and passport
-            2. Fail
-        """
-        rut = '52243213-K'
-        result = views.EolContactFormView().validate_rut(rut)
-        self.assertEqual(result, True)
-
-        passport = 'P123456'
-        result = views.EolContactFormView().validate_rut(passport)
-        self.assertEqual(result, True)
-
-        rut = '52243213-0'
-        result = views.EolContactFormView().validate_rut(rut)
-        self.assertEqual(result, False)
-
     @with_site_configuration(configuration=test_config)
     @patch("django.core.mail.EmailMultiAlternatives.send")
     def test_send_contact_mail(self, send):
@@ -149,10 +126,9 @@ class TestEolContactForm(TestCase):
             2. Fail
         """
         data = {
-            'form-rut': '52243213-K',
             'form-name': 'test_name',
             'form-email': 'test_email@email.com',
-            'form-type': 'curso',
+            'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
             'g-recaptcha-response': 'text_recaptcha'
@@ -172,7 +148,7 @@ class TestEolContactForm(TestCase):
         """
             Test POST function
             1. Post success
-            2. Validation error (rut)
+            2. Validation error
             3. Send email error
             4. Post error (without all attributes)
         """
@@ -180,10 +156,9 @@ class TestEolContactForm(TestCase):
         send_contact_mail.side_effect = [True]
         # Make Post
         data = {
-            'form-rut': '52243213-K',
             'form-name': 'test_name',
             'form-email': 'test_email@email.com',
-            'form-type': 'curso',
+            'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
             'g-recaptcha-response': 'text_recaptcha'
@@ -193,25 +168,8 @@ class TestEolContactForm(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('class="alert success"', content.decode('utf-8'))
 
-        data['form-rut'] = '52243213-0'  # wrong rut
-        response = self.client.post(reverse('contact_form_view'), data)
-        content = response.content
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('class="alert error"', content.decode('utf-8'))
-
-        data['form-rut'] = '522PAÑ21-0'  # wrong rut
-        response = self.client.post(reverse('contact_form_view'), data)
-        content = response.content
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('class="alert error"', content.decode('utf-8'))
-
-        data['form-rut'] = '52243213-K'
         send_contact_mail.side_effect = [False]
         response = self.client.post(reverse('contact_form_view'), data)
         content = response.content
         self.assertEqual(response.status_code, 200)
         self.assertIn('class="alert error"', content.decode('utf-8'))
-
-        del data['form-rut']
-        response = self.client.post(reverse('contact_form_view'), data)
-        self.assertEqual(response.status_code, 400)
