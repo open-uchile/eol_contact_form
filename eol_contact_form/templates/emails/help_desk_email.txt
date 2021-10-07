@@ -14,6 +14,6 @@
     <p>${_("Course:")} <strong>${user_course}</strong>.</p>
     % endif
 </center>
-<h2>${_("Cuerpo del mensaje:")}</h2>
+<h2>${_("Message body:")}</h2>
 <p>${user_message}</p>
 </html>
