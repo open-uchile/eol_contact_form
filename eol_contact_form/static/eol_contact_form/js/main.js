@@ -6,6 +6,9 @@ var correctCaptcha = function(response) {
     }
 };
 $(function() {
+    const referrer = document.referrer;
+    $('#form-referrer').val(referrer);
+
     show_course_name();
 
     $('#form-type').on('change', function() {
