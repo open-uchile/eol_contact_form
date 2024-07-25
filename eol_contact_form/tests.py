@@ -48,6 +48,7 @@ class TestEolContactForm(TestCase):
             'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
+            'form-referrer':'https://example.org/certificates/course/course-v1:openuchile+MED_CON+2024_1',
             'g-recaptcha-response': 'text_recaptcha'
         }
         result = views.EolContactFormView().validate_data(data)
@@ -131,6 +132,7 @@ class TestEolContactForm(TestCase):
             'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
+            'form-referrer':'https://example.org/certificates/course/course-v1:openuchile+MED_CON+2024_1',
             'g-recaptcha-response': 'text_recaptcha'
         }
         send.side_effect = [1]
@@ -161,6 +163,7 @@ class TestEolContactForm(TestCase):
             'form-type': 'course',
             'form-course': 'course_example',
             'form-message': 'message_text',
+            'form-referrer':'https://example.org/certificates/course/course-v1:openuchile+MED_CON+2024_1',
             'g-recaptcha-response': 'text_recaptcha'
         }
         response = self.client.post(reverse('contact_form_view'), data)
