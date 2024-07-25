@@ -6,9 +6,9 @@
 <%inherit file="../main.html" />
 <%block name="pagetitle">${_("Contact Form")}</%block>
 <script src="https://www.google.com/recaptcha/api.js?explicit&hl=en" async defer></script>
-<link rel="stylesheet" type="text/css" href="${static.url('eol_contact_form/css/main.css')}"/> 
-<% 
-data = context.get('data', None) 
+<link rel="stylesheet" type="text/css" href="${static.url('eol_contact_form/css/main.css')}"/>
+<%
+data = context.get('data', None)
 %>
 
 <main id="eol-contact" aria-label="Content" tabindex="-1" role="main" class="static_pages mt-0 eol-bg w-100 mx-auto contact-form" style="background-image: url(${static.url('open-uchile-theme/images/bg_nodes.png')});">
@@ -23,23 +23,24 @@ data = context.get('data', None)
                 <form method="POST">
                     % if context.get('send_email_error', None):
                     <div class="alert error">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>${_("Try Again")}</strong><br>${_("There was a problem trying to generate your ticket.")}<br>${_("If the problem persists, send an email to")} ${help_desk_email}
                     </div>
                     % endif
                     % if context.get('error', None):
                     <div class="alert error">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>¡Error!</strong> ${_("Enter a valid {error}").format(error=context.get('error', None))} 
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>¡Error!</strong> ${_("Enter a valid {error}").format(error=context.get('error', None))}
                     </div>
                     % endif
                     % if context.get('success', None):
                     <div class="alert success">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>${_("¡Sent!")}</strong>. ${_("Our help desk will answer you as soon as possible")}
                     </div>
                     % endif
                     <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
+                    <input type="hidden" name="form-referrer" id="form-referrer"/>
 
                     <div class="form-group">
                         <label for="form-name">${_("Name")}</label>
