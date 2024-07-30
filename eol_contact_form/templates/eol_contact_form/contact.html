@@ -11,7 +11,7 @@
 data = context.get('data', None) 
 %>
 
-<main id="eol-contact" aria-label="Content" tabindex="-1" role="main" class="static_pages mt-0 eol-bg w-100 mx-auto contact-form" style="background-image: url(${static.url('open-uchile-theme/images/bg_nodes.png')});">
+<main id="eol-contact" aria-label="Content" tabindex="-1" role="main" class="static_pages mt-0 eol-bg w-100 mx-auto contact-form" style="background-image: url(${static.url('open-uchile-theme/images/svg-2023/nodos_transparentes.png')});">
     <div class="container eol-content-container py-2 px-2 mx-auto">
         <div class="row">
             <div class="col-12">
@@ -19,7 +19,7 @@ data = context.get('data', None)
                 <p class="text-center mt-0 pt-0 text-muted">${_("Fill out the form and our help desk will contact you shortly.")}</p>
             </div>
             <div class="contact-card col-11 col-md-10 col-lg-8 mx-auto shadow-lg px-5 py-4 mt-2 mb-5 bg-white rounded-lg">
-                <p class="contact-availability mt-0 text-right text-muted"><small>${_("Help desk hours (GMT-3): from 09:00 until 18:00 (Monday - Friday)")}</small></p>
+                <p class="contact-availability mt-0 text-right text-muted"><small>${_("Help desk hours (GMT-4): from 09:00 until 18:00 (Monday - Friday)")}</small></p>
                 <form method="POST">
                     % if context.get('send_email_error', None):
                     <div class="alert error">
@@ -43,7 +43,7 @@ data = context.get('data', None)
 
                     <div class="form-group">
                         <label for="form-name">${_("Name")}</label>
-                        <input type="text" class="form-control" id="form-name" name="form-name" required placeholder ='${_("Enter your name")}' value="${data['form-name']}">
+                        <input type="text" class="form-control" id="form-name" name="form-name" required placeholder='${_("Enter your name")}' value="${data['form-name']}">
                     </div>
                     <div class="form-group">
                         <label for="form-email">${_("Email")}</label>
@@ -77,7 +77,7 @@ data = context.get('data', None)
                         <div class="google-recaptcha">
                             <div class="g-recaptcha" data-sitekey="${context.get('recaptcha_site_key', None)}" data-callback="correctCaptcha" data-expired-callback="correctCaptcha"></div>
                         </div>
-                        <input disabled class="btn mx-auto my-3 py-2 px-5 form-submit" type="submit" value='Submit'>
+                        <input disabled class="btn mx-auto my-3 py-2 px-5 form-submit" type="submit" value="${_('Submit')}">
                     </center>
                 </form>
             </div>
