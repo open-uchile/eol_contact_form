@@ -2,15 +2,15 @@ import setuptools
 
 setuptools.setup(
     name="eol_contact_form",
-    version="0.0.1",
-    author="matiassalinas",
-    author_email="matsalinas@uchile.cl",
+    version="0.1.0",
+    author="Oficina EOL UChile",
+    author_email="eol-ing@uchile.cl",
     description="Eol Contact Form",
     long_description="Eol Contact Form",
-    url="https://eol.uchile.cl",
+    url="https://github.com/open-uchile/eol_contact_form",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
