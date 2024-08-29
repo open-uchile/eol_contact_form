@@ -1,0 +1,164 @@
+# English translations for OPEN.
+# Copyright (C) 2024 EOL
+# This file is distributed under the same license as the OPEN project.
+# EOL <eol-ing@uchile.cl>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OPEN 0.1.0\n"
+"Report-Msgid-Bugs-To: eol-ing@uchile.cl\n"
+"POT-Creation-Date: 2024-08-29 17:29+0000\n"
+"PO-Revision-Date: 2024-08-29 17:29+0000\n"
+"Last-Translator: EOL <eol-ing@uchile.cl>\n"
+"Language: en\n"
+"Language-Team: en <eol-ing@uchile.cl>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: eol_contact_form/tests.py:65 eol_contact_form/views.py:113
+msgid "Message"
+msgstr ""
+
+#: eol_contact_form/tests.py:70 eol_contact_form/views.py:108
+msgid "Course"
+msgstr ""
+
+#: eol_contact_form/tests.py:75 eol_contact_form/views.py:103
+msgid "Category"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:50
+#: eol_contact_form/tests.py:80 eol_contact_form/views.py:98
+msgid "Email"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:46
+#: eol_contact_form/tests.py:85 eol_contact_form/views.py:93
+msgid "Name"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:8
+msgid ""
+"(Username: {user_username}){strong_tag_close} has created a ticket "
+"through the platform:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:10
+msgid "{user_name}{strong_tag_close} has created a ticket through the platform:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:12
+msgid "User Email:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:13
+msgid "Category:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:15
+msgid "Previous Page:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:16
+msgid "Previous Page Course Code:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:19
+msgid "Course:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:22
+msgid "Message body:"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:7
+#: eol_contact_form/templates/eol_contact_form/contact.html:18
+msgid "Contact Form"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:19
+msgid "Fill out the form and our help desk will contact you shortly."
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:22
+msgid "Help desk hours (GMT-4): from 09:00 until 18:00 (Monday - Friday)"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:27
+msgid "Try Again"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:27
+msgid "There was a problem trying to generate your ticket."
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:27
+msgid "If the problem persists, send an email to"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:33
+msgid "Enter a valid {error}"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:39
+msgid "¡Sent!"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:39
+msgid "Our help desk will answer you as soon as possible"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:47
+msgid "Enter your name"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:51
+msgid "Enter your email"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:54
+msgid "Related to:"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:62
+msgid "Select an option"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:63
+msgid "General"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:64
+msgid "Specific Course"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:65
+msgid "Login"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:66
+msgid "Other"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:70
+msgid "Course name"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:71
+msgid "Enter the course name"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:74
+msgid "Describe your problem"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:75
+msgid "Enter your questions and queries here"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:81
+msgid "Submit"
+msgstr ""
