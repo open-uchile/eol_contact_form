@@ -20,7 +20,33 @@ Set help desk email in a Site:
 - */admin/site_configuration/siteconfiguration/*
     - **"EOL_CONTACT_FORM_HELP_DESK_EMAIL":""**
 
-## TESTS
+# Translations:
+To add new words to be translated you need to follow these steps.
+1. Create the container where the commands will be run:
+    ```
+    docker run -it --rm -w /code -v $(pwd):/code python:3.8 bash
+    ```
+
+2. Install the requirements:
+    ```
+    pip install -r requirements.in
+    ```
+
+3. Update the translations:
+
+    ```
+    make update_translations
+    ```
+
+4. Modify .po:
+> [!WARNING]
+> REMEMBER: Remember to add the Spanish translation.
+
+5. Compile the modified .po into .mo
+    ```
+    make compile_translations
+    ```
+# TESTS
 **Prepare tests:**
 
     > cd .github/
