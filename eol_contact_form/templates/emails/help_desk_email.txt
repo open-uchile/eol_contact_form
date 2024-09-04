@@ -5,20 +5,20 @@
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
 <center>
     % if user_username:
-        <p><strong>${user_name} ${_("(Username: {user_username}){strong_tag_close} has created a ticket through the platform:").format(user_username=user_username, strong_tag_close='</strong>')} <strong>${platform_name}</strong>.</p>
+        <p><strong>${user_name} ${_("(Username: {user_username}){strong_tag_close} has sent a message through the platform:").format(user_username=user_username, strong_tag_close='</strong>')} <strong>${platform_name}</strong>.</p>
     % else:
-        <p><strong>${_("{user_name}{strong_tag_close} has created a ticket through the platform:").format(user_name=user_name, strong_tag_close='</strong>')} <strong>${platform_name}</strong>.</p>
+        <p><strong>${_("{user_name}{strong_tag_close} has sent a message through the platform:").format(user_name=user_name, strong_tag_close='</strong>')} <strong>${platform_name}</strong>.</p>
     % endif
-     <p>${_("User Email:")} <strong>${user_email}</strong>.</p>
-    <p>${_("Category:")} <strong>${user_type_message}</strong>.</p>
+     <p>${_("Email")}: <strong>${user_email}</strong>.</p>
+    <p>${_("Category")}: <strong>${user_type_message}</strong>.</p>
     % if user_form_referrer != '':
         <p>${_("Previous Page:")} <strong>${user_form_referrer}</strong>.</p>
         <p>${_("Previous Page Course Code:")} <strong>${user_form_referrer_course}</strong>.</p>
     % endif
     % if user_type_message == 'COURSE':
-        <p>${_("Course:")} <strong>${user_course}</strong>.</p>
+        <p>${_("Course")}: <strong>${user_course}</strong>.</p>
     % endif
 </center>
-<h2>${_("Message body:")}</h2>
+<h2>${_("Message")}:</h2>
 <p>${user_message}</p>
 </html>

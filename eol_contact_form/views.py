@@ -30,6 +30,8 @@ def _default_data():
         'form-course': '',
         'form-message': '',
         'form-referrer': '',
+        'form-identifier':'',
+        'form-select-course':'',
     }
 
 
