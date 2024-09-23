@@ -31,7 +31,6 @@ def _default_data():
         'form-message': '',
         'form-referrer': '',
         'form-identifier':'',
-        'form-select-course':'',
     }
 
 
@@ -149,6 +148,14 @@ class EolContactFormView(View):
         user_form_referrer_course=""
         if(data['form-referrer'].strip()!= ''):
             user_form_referrer_course=re.findall('course-v1:[^/+]+\+[^/+]+\+[^/]+',data['form-referrer'])
+        list_course = [
+            'issuance_of_certificates',
+            'where_to_find_the_course_programs',
+            'problems_in_progress',
+            'content_of_a_course',
+            'administrative',
+            'evaluations'
+        ]
 
         email_data = {
             "user_name": data['form-name'].strip().upper(),
@@ -157,8 +164,10 @@ class EolContactFormView(View):
             "user_email": data['form-email'].strip(),
             "user_form_referrer": data['form-referrer'].strip(),
             "user_form_referrer_course": user_form_referrer_course,
-            "user_type_message": data['form-type'].upper(),
+            "user_type_message": _(data['form-type']),
+            "need_course": data['form-type'] in list_course,
             "user_course": data['form-course'].strip().upper(),
+            "user_identifier": data['form-identifier'].strip(),
             "platform_name": platform_name,
         }
         # Generate HTML Message with help_desk_email template

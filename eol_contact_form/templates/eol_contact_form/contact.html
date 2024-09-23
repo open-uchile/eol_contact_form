@@ -52,49 +52,29 @@ data = context.get('data', None)
                     <div class="form-group">
                         <label for="form-type">${_("Please tell us which category your question belongs to")}</label>
                         <select class="form-control" id="form-type" required name="form-type" style="text-indent: 0px; height: auto;">
-                            <%
-                                issuance_of_certificates_selected = 'selected' if data['form-type'] == 'issuance_of_certificates' else ''
-                                where_to_find_the_course_programs_selected = 'selected' if data['form-type'] == 'where_to_find_the_course_programs' else ''
-                                problems_in_progress_selected = 'selected' if data['form-type'] == 'problems_in_progress' else ''
-                                content_of_a_course_selected = 'selected' if data['form-type'] == 'content_of_a_course' else ''
-                                administrative_selected = 'selected' if data['form-type'] == 'administrative' else ''
-                                evaluations_selected = 'selected' if data['form-type'] == 'evaluations' else ''
-
-                                login_selected = 'selected' if data['form-type'] == 'login' else ''
-                                identity_verification_selected = 'selected' if data['form-type'] == 'identity_verification' else ''
-                                platform_errors_selected = 'selected' if data['form-type'] == 'platform_errors' else ''
-
-                                creation_of_courses_selected = 'selected' if data['form-type'] == 'creation_of_courses' else ''
-                                teacher_training_selected = 'selected' if data['form-type'] == 'teacher_training' else ''
-                                honor_code_selected = 'selected' if data['form-type'] == 'honor_code' else ''
-                                
-                                congratulations_selected = 'selected' if data['form-type'] == 'congratulations' else ''
-                                comments_or_suggestions_selected = 'selected' if data['form-type'] == 'comments_or_suggestions' else ''
-                                complaints_selected = 'selected' if data['form-type'] == 'complaints' else ''
-                            %>
                             <option disabled selected value="">${_("Select a category")}</option>
                             <optgroup label='${_("Specific course questions")}'>
-                                <option value="issuance_of_certificates" ${issuance_of_certificates_selected}>${_("Issuance of Certificates")}</option>
-                                <option value="where_to_find_the_course_programs" ${where_to_find_the_course_programs_selected}>${_("Where to find the course programs")}</option>
-                                <option value="problems_in_progress" ${problems_in_progress_selected}>${_("Problems in progress")}</option>
-                                <option value="content_of_a_course" ${content_of_a_course_selected}>${_("Content of a course")}</option>
-                                <option value="administrative" ${administrative_selected}>${_("Administrative")}</option>
-                                <option value="evaluations" ${evaluations_selected}>${_("Evaluations")}</option>
+                                <option value="issuance_of_certificates">${_("Issuance of Certificates")}</option>
+                                <option value="where_to_find_the_course_programs">${_("Where to find the course programs")}</option>
+                                <option value="problems_in_progress">${_("Problems in progress")}</option>
+                                <option value="content_of_a_course">${_("Content of a course")}</option>
+                                <option value="administrative">${_("Administrative")}</option>
+                                <option value="evaluations">${_("Evaluations")}</option>
                             </optgroup>
                             <optgroup label='${_("Technical problems")}'>
-                                <option value="login" ${login_selected}>${_("Login problems")}</option>
-                                <option value="identity_verification" ${identity_verification_selected}>${_("Identity verification")}</option>
-                                <option value="platform_errors" ${platform_errors_selected}>${_("Platform errors")}</option>
+                                <option value="login">${_("Login problems")}</option>
+                                <option value="identity_verification">${_("Identity verification")}</option>
+                                <option value="platform_errors">${_("Platform errors")}</option>
                             </optgroup>
                             <optgroup label='${_("Use of the platform")}'>
-                                <option value="creation_of_courses" ${creation_of_courses_selected}>${_("Creation of courses")}</option>
-                                <option value="teacher_training" ${teacher_training_selected}>${_("Teacher training")}</option>
-                                <option value="honor_code" ${honor_code_selected}>${_("Honor code")}</option>
+                                <option value="creation_of_courses">${_("Creation of courses")}</option>
+                                <option value="teacher_training">${_("Teacher training")}</option>
+                                <option value="honor_code">${_("Honor code")}</option>
                             </optgroup>
                             <optgroup label='${_("Other")}'>
-                                <option value="congratulations" ${congratulations_selected}>${_("Congratulations")}</option>
-                                <option value="comments_or_suggestions" ${comments_or_suggestions_selected}>${_("Comments or suggestions")}</option>
-                                <option value="complaints" ${complaints_selected}>${_("Complaints")}</option>
+                                <option value="congratulations">${_("Congratulations")}</option>
+                                <option value="comments_or_suggestions">${_("Comments or suggestions")}</option>
+                                <option value="complaints">${_("Complaints")}</option>
                             </optgroup>
                             
                         </select>
@@ -102,12 +82,6 @@ data = context.get('data', None)
                     <div class="form-group">
                         <label class="form-course-name" for="form-course">${_("Please tell us the name of the course")}</label>
                         <input class="form-course-name form-control" type="text" id="form-course" name="form-course" placeholder='${_("Example: Course name")}' value="${data['form-course']}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-select-course-name" for="form-select-course">${_("Please select the name of the course")}</label>
-                        <select  class="form-control"  id="select-course" name="form-select-course" for="form-select-course">
-                            <option disabled selected value="">${_("Select a course")}</option>
-                        </select>
                     </div>
 
                     <div class="form-group">
