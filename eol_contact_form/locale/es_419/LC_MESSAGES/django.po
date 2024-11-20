@@ -51,13 +51,13 @@ msgid ""
 "(Username: {user_username}){strong_tag_close} has sent a message through "
 "the platform:"
 msgstr ""
-"(Usuario: {user_username}){strong_tag_close}  ha enviado un mensaje a "
+"(Usuario: {user_username}){strong_tag_close} ha enviado un mensaje a "
 "través de la plataforma "
 
 #: eol_contact_form/templates/emails/help_desk_email.txt:10
 msgid "{user_name}{strong_tag_close} has sent a message through the platform:"
 msgstr ""
-"(Usuario: {user_username}){strong_tag_close}  ha enviado un mensaje a "
+"(Usuario: {user_username}){strong_tag_close} ha enviado un mensaje a "
 "través de la plataforma "
 
 #: eol_contact_form/templates/emails/help_desk_email.txt:15
@@ -104,8 +104,8 @@ msgid "Enter a valid {error}"
 msgstr "Ingresa un {error} válido"
 
 #: eol_contact_form/templates/eol_contact_form/contact.html:38
-msgid "¡Message sent!"
-msgstr "Mensaje enviado!"
+msgid "Message sent!"
+msgstr "¡Mensaje enviado!"
 
 #: eol_contact_form/templates/eol_contact_form/contact.html:38
 msgid "Wait for our help desk to contact you"

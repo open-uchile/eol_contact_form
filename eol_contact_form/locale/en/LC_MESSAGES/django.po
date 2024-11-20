@@ -97,7 +97,7 @@ msgid "Enter a valid {error}"
 msgstr ""
 
 #: eol_contact_form/templates/eol_contact_form/contact.html:38
-msgid "¡Message sent!"
+msgid "Message sent!"
 msgstr ""
 
 #: eol_contact_form/templates/eol_contact_form/contact.html:38
