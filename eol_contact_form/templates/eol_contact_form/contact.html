@@ -52,29 +52,29 @@ data = context.get('data', None)
                     <div class="form-group">
                         <label for="form-type">${_("Please tell us which category your question belongs to")}</label>
                         <select class="form-control" id="form-type" required name="form-type" style="text-indent: 0px; height: auto;">
-                            <option disabled selected value="">${_("Select a category")}</option>
-                            <optgroup label='${_("Specific course questions")}'>
-                                <option value="issuance_of_certificates">${_("Issuance of Certificates")}</option>
-                                <option value="where_to_find_the_course_programs">${_("Where to find the course programs")}</option>
-                                <option value="problems_in_progress">${_("Problems in progress")}</option>
-                                <option value="content_of_a_course">${_("Content of a course")}</option>
-                                <option value="administrative">${_("Administrative")}</option>
-                                <option value="evaluations">${_("Evaluations")}</option>
+                            <option disabled value="">${_("Select a category")}</option>
+                            <optgroup label='${_("Specific course questions")}' >
+                                <option value='${_("Issuance of Certificates")}'>${_("Issuance of Certificates")}</option>
+                                <option value='${_("Where to find the course programs")}'>${_("Where to find the course programs")}</option>
+                                <option value='${_("Problems in the progress")}'>${_("Problems in the progress")}</option>
+                                <option value='${_("Content of a course")}'>${_("Content of a course")}</option>
+                                <option value='${_("Administrative")}'>${_("Administrative")}</option>
+                                <option value='${_("Evaluations")}'>${_("Evaluations")}</option>
                             </optgroup>
                             <optgroup label='${_("Technical problems")}'>
-                                <option value="login">${_("Login problems")}</option>
-                                <option value="identity_verification">${_("Identity verification")}</option>
-                                <option value="platform_errors">${_("Platform errors")}</option>
+                                <option value='${_("Login problems")}'>${_("Login problems")}</option>
+                                <option value='${_("Identity verification")}'>${_("Identity verification")}</option>
+                                <option value='${_("Platform errors")}'>${_("Platform errors")}</option>
                             </optgroup>
                             <optgroup label='${_("Use of the platform")}'>
-                                <option value="creation_of_courses">${_("Creation of courses")}</option>
-                                <option value="teacher_training">${_("Teacher training")}</option>
-                                <option value="honor_code">${_("Honor code")}</option>
+                                <option value='${_("Creation of courses")}'>${_("Creation of courses")}</option>
+                                <option value='${_("Teacher training")}'>${_("Teacher training")}</option>
+                                <option value='${_("Honor code")}'>${_("Honor code")}</option>
                             </optgroup>
                             <optgroup label='${_("Other")}'>
-                                <option value="congratulations">${_("Congratulations")}</option>
-                                <option value="comments_or_suggestions">${_("Comments or suggestions")}</option>
-                                <option value="complaints">${_("Complaints")}</option>
+                                <option value='${_("Congratulations")}'>${_("Congratulations")}</option>
+                                <option value='${_("Comments or suggestions")}'>${_("Comments or suggestions")}</option>
+                                <option value='${_("Complaints")}'>${_("Complaints")}</option>
                             </optgroup>
                         </select>
                     </div>

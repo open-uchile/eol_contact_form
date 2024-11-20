@@ -21,15 +21,7 @@ $(function() {
     });
     
     function show_course_name() {
-        const list_course = [
-            'issuance_of_certificates',
-            'where_to_find_the_course_programs',
-            'problems_in_progress',
-            'content_of_a_course',
-            'administrative',
-            'evaluations'
-        ]
-        if( list_course.includes($('#form-type').val())) {
+        if( $('#form-type').val(selected.parent().attr('label')) == gettext("Specific course questions")) {
             $('.form-course-name').hide();
             $('#form-course').val('');
             $("#form-course").prop('required',false);
@@ -39,7 +31,7 @@ $(function() {
         }
     }
     function show_identifier() {
-        if($('#form-type').val() == 'login') {
+        if($('#form-type').val() == gettext("Login problems")) {
             $('.form-identifier-text').show();
         } else {
             $('.form-identifier-text').hide();
@@ -47,14 +39,14 @@ $(function() {
         }
     }
     function show_eol_link() {
-        if($('#form-type').val() == 'teacher_training') {
+        if($('#form-type').val() == gettext("Teacher training")) {
             $('#eol-link').show();
         } else {
             $('#eol-link').hide();
         }
     }
     function show_honor_link() {
-        if($('#form-type').val() == 'honor_code') {
+        if($('#form-type').val() == gettext("Honor code")) {
             $('#honor-link').show();
         } else {
             $('#honor-link').hide();
