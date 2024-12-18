@@ -21,13 +21,13 @@ $(function() {
     });
     
     function show_course_name() {
-        if( $('#form-type').val(selected.parent().attr('label')) == gettext("Specific course questions")) {
+        if($('#form-type :selected').parent().attr('label') == gettext("Specific course questions")) {
+            $('.form-course-name').show();
+            $("#form-course").prop('required',true);
+        }else{
             $('.form-course-name').hide();
             $('#form-course').val('');
             $("#form-course").prop('required',false);
-        }else{
-            $('.form-course-name').show();
-            $("#form-course").prop('required',true);
         }
     }
     function show_identifier() {

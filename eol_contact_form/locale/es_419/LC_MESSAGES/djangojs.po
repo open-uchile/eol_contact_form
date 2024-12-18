@@ -20,7 +20,7 @@ msgstr ""
 
 #: eol_contact_form/static/eol_contact_form/js/main.js:24
 msgid "Specific course questions"
-msgstr ""
+msgstr "Preguntas de un curso específico"
 
 #: eol_contact_form/static/eol_contact_form/js/main.js:34
 msgid "Login problems"
