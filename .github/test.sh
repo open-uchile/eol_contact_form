@@ -1,15 +1,18 @@
-#!/bin/dash
+#!/bin/bash
 
-pip install -e /openedx/requirements/eol_contact_form
+set -e
 
-cd /openedx/requirements/eol_contact_form/eol_contact_form
+pip install --src /openedx/venv/src -e /openedx/requirements/app
+
+cd /openedx/requirements/app
 cp /openedx/edx-platform/setup.cfg .
+
 mkdir test_root
 cd test_root/
 ln -s /openedx/staticfiles .
 
-cd /openedx/requirements/eol_contact_form/eol_contact_form
+cd /openedx/requirements/app
 
-DJANGO_SETTINGS_MODULE=lms.envs.test EDXAPP_TEST_MONGO_HOST=mongodb pytest tests.py
-
-rm -rf test_root
+DJANGO_SETTINGS_MODULE=lms.envs.test EDXAPP_TEST_MONGO_HOST=mongodb pytest eol_contact_form/tests.py \
+  && \
+  rm -rf test_root
