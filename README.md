@@ -56,5 +56,5 @@ To add new words to be translated you need to follow these steps.
 *Last Update 15/04/2020*
 
 <p align="center">
-<img width="600" src="examples/lms_form.png">
+<img width="600" src="examples/lms_contact_form.png">
 </p>
