@@ -50,11 +50,11 @@ To add new words to be translated you need to follow these steps.
 **Prepare tests:**
 
     > cd .github/
-    > docker-compose run lms /openedx/requirements/eol_contact_form/.github/test.sh
+    > docker compose run lms /openedx/requirements/eol_contact_form/.github/test.sh
 
 # Screenshots
 *Last Update 15/04/2020*
 
 <p align="center">
-<img width="600" src="examples/lms_form.png">
+<img width="600" src="examples/lms_contact_form.png">
 </p>

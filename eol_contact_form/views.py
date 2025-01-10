@@ -13,11 +13,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
-from itertools import cycle
 import requests
-import json
 import re
-
 
 import logging
 logger = logging.getLogger(__name__)
@@ -30,8 +27,8 @@ def _default_data():
         'form-course': '',
         'form-message': '',
         'form-referrer': '',
+        'form-identifier':'',
     }
-
 
 class EolContactFormView(View):
     def get(self, request):
@@ -155,8 +152,9 @@ class EolContactFormView(View):
             "user_email": data['form-email'].strip(),
             "user_form_referrer": data['form-referrer'].strip(),
             "user_form_referrer_course": user_form_referrer_course,
-            "user_type_message": data['form-type'].upper(),
+            "user_type_message": data['form-type'],
             "user_course": data['form-course'].strip().upper(),
+            "user_identifier": data['form-identifier'].strip(),
             "platform_name": platform_name,
         }
         # Generate HTML Message with help_desk_email template
