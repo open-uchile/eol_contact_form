@@ -13,11 +13,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
-from itertools import cycle
 import requests
-import json
 import re
-
 
 import logging
 logger = logging.getLogger(__name__)
@@ -30,8 +27,8 @@ def _default_data():
         'form-course': '',
         'form-message': '',
         'form-referrer': '',
+        'form-identifier':'',
     }
-
 
 class EolContactFormView(View):
     def get(self, request):
@@ -72,7 +69,7 @@ class EolContactFormView(View):
         # If data is invalid, send error flag and form data
         if validation['error']:
             context['error'] = validation['error_attr']
-            context['data'] = request.POST  # Update data with form values
+            context['data'] = request.POST # Update data with form values
             return render(request, 'eol_contact_form/contact.html', context)
 
         # Send success or email_error flag
@@ -149,14 +146,15 @@ class EolContactFormView(View):
             user_form_referrer_course=re.findall('course-v1:[^/+]+\+[^/+]+\+[^/]+',data['form-referrer'])
 
         email_data = {
-            "user_name": data['form-name'].strip().upper(),
-            "user_username" : username.upper(),
+            "user_name": data['form-name'].strip(),
+            "user_username" : username,
             "user_message": data['form-message'].strip(),
             "user_email": data['form-email'].strip(),
             "user_form_referrer": data['form-referrer'].strip(),
             "user_form_referrer_course": user_form_referrer_course,
-            "user_type_message": data['form-type'].upper(),
-            "user_course": data['form-course'].strip().upper(),
+            "user_type_message": data['form-type'],
+            "user_course": data['form-course'].strip(),
+            "user_identifier": data['form-identifier'].strip(),
             "platform_name": platform_name,
         }
         # Generate HTML Message with help_desk_email template
@@ -166,7 +164,7 @@ class EolContactFormView(View):
         plain_message = strip_tags(html_message)
 
         subject = '{} - {}'.format(data['form-type'].upper(), platform_name)
-        reply_to = data['form-email']  # User email
+        reply_to = data['form-email'] # User email
 
         # Send Email with plain message
         email_message = EmailMultiAlternatives(

@@ -1,0 +1,246 @@
+# English translations for OPEN.
+# Copyright (C) 2024 EOL
+# This file is distributed under the same license as the OPEN project.
+# EOL <eol-ing@uchile.cl>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OPEN 0.1.0\n"
+"Report-Msgid-Bugs-To: eol-ing@uchile.cl\n"
+"POT-Creation-Date: 2025-03-05 20:23+0000\n"
+"PO-Revision-Date: 2024-08-30 18:18+0000\n"
+"Last-Translator: EOL <eol-ing@uchile.cl>\n"
+"Language: en\n"
+"Language-Team: en <eol-ing@uchile.cl>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:37
+#: eol_contact_form/tests.py:66 eol_contact_form/views.py:110
+msgid "Message"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:28
+#: eol_contact_form/tests.py:71 eol_contact_form/views.py:105
+msgid "Course"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:16
+#: eol_contact_form/tests.py:76 eol_contact_form/views.py:100
+msgid "Category"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:13
+#: eol_contact_form/tests.py:81 eol_contact_form/views.py:95
+msgid "Email"
+msgstr ""
+
+#: eol_contact_form/tests.py:86 eol_contact_form/views.py:90
+msgid "Name"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:8
+#, python-brace-format
+msgid ""
+"(Username: {user_username}){strong_tag_close} has sent a message through "
+"the platform:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:10
+#, python-brace-format
+msgid "{user_name}{strong_tag_close} has sent a message through the platform:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:20
+msgid "Previous Page:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:23
+msgid "Previous Page Course Code:"
+msgstr ""
+
+#: eol_contact_form/templates/emails/help_desk_email.txt:33
+msgid "RUT, DNI or passport"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:7
+#: eol_contact_form/templates/eol_contact_form/contact.html:18
+msgid "Contact Form"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:19
+msgid ""
+"Fill out the form to contact our Help Desk and we will get back to you as"
+" soon as possible. Our office hours are Monday to Friday from 09:00 to "
+"18:00 hrs (Santiago, Chile)."
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:26
+msgid "Try Again"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:26
+msgid "There was a problem trying to send your message."
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:26
+msgid "If the problem persists, send an email to"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:32
+#, python-brace-format
+msgid "Enter a valid {error}"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:38
+msgid "Message sent!"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:38
+msgid "Wait for our help desk to contact you"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:45
+msgid "Please enter your full name"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:46
+msgid "Example: John Smith"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:49
+msgid "Please provide us with an e-mail address where we can contact you"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:50
+msgid "Example: john.smith@mail.me"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:53
+msgid "Please tell us which category your question belongs to"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:55
+msgid "Select a category"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:56
+msgid "Specific course questions"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:57
+msgid "Issuance of Certificates"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:58
+msgid "Where to find the course programs"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:59
+msgid "Problems in the progress"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:60
+msgid "Content of a course"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:61
+msgid "Administrative"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:62
+msgid "Evaluations"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:64
+msgid "Technical problems"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:65
+msgid "Login problems"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:66
+msgid "Identity verification"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:67
+msgid "Platform errors"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:69
+msgid "Use of the platform"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:70
+msgid "Creation of courses"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:71
+msgid "Teacher training"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:72
+msgid "Honor code"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:74
+msgid "Other"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:75
+msgid "Congratulations"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:76
+msgid "Comments or suggestions"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:77
+msgid "Complaints"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:82
+msgid "Please tell us the name of the course"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:83
+msgid "Example: Introduction to EOL platform"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:86
+msgid "Please indicate your RUT, DNI or passport"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:87
+msgid "Example: 12.345.678-9 or A12345678"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:91
+#: eol_contact_form/templates/eol_contact_form/contact.html:96
+msgid "For more information, please visit "
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:91
+msgid "EOL"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:96
+msgid "Terms and Conditions"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:100
+msgid "Please tell us more about your question"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:101
+msgid "Enter more details about what you want to tell us"
+msgstr ""
+
+#: eol_contact_form/templates/eol_contact_form/contact.html:107
+msgid "Submit message"
+msgstr ""
+
